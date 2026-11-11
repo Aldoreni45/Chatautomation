@@ -1,0 +1,139 @@
+
+# ==========================================
+# PYTHON
+# ==========================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# ==========================================
+# VIRTUAL ENVIRONMENTS
+# ==========================================
+
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# ==========================================
+# UV
+# ==========================================
+
+# UV cache (only if stored inside project)
+.uv_cache/
+
+# ==========================================
+# BUILD & PACKAGING
+# ==========================================
+
+build/
+dist/
+wheels/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# ==========================================
+# ENVIRONMENT VARIABLES & SECRETS
+# ==========================================
+
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# DJANGO
+# ==========================================
+
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Django static and media files
+staticfiles/
+media/
+
+# ==========================================
+# TESTING & COVERAGE
+# ==========================================
+
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+junit.xml
+
+# ==========================================
+# TYPE CHECKING & LINTING
+# ==========================================
+
+.mypy_cache/
+.dmypy.json
+.pyre/
+.ruff_cache/
+.pytype/
+
+# ==========================================
+# JUPYTER NOTEBOOKS
+# ==========================================
+
+.ipynb_checkpoints/
+
+# ==========================================
+# IDE & EDITORS
+# ==========================================
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ==========================================
+# OPERATING SYSTEM
+# ==========================================
+
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==========================================
+# TEMPORARY FILES
+# ==========================================
+
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# ==========================================
+# DATABASE & BACKUPS
+# ==========================================
+
+*.sqlite3
+*.sqlite3-journal
+*.dump
+*.bak
+
+# ==========================================
+# CELERY / BACKGROUND TASKS
+# ==========================================
+
+celerybeat-schedule
+celerybeat.pid
+
+# ==========================================
+# APPLICATION GENERATED FILES
+# ==========================================
+
+logs/
+tmp/
+temp/
