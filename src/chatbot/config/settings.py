@@ -11,21 +11,25 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+PROJECT_ROOT = BASE_DIR.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*(ki9c7j-kft@)#)qe$9typ-84x_w8y#eh*ufy7je3tg-2%a=+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+env=environ.Env()
+environ.Env.read_env(PROJECT_ROOT / ".env")
 
-ALLOWED_HOSTS = []
+SECRET_KEY = env("DJANGO_SECRET_KEY")
+DEBUG = env.bool("DJANGO_DEBUG", default=False)
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "rest_framework",
+    "apps.core.apps.CoreConfig",
+    "apps.stores.apps.StoresConfig",
+    "apps.products.apps.ProductsConfig",
+    "apps.inventory.apps.InventoryConfig",
+    "apps.pricing.apps.PricingConfig",
 ]
 
 MIDDLEWARE = [
@@ -73,12 +83,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": env.db("DATABASE_URL")
 }
 
+DATABASES["default"]["CONN_MAX_AGE"] = 60
+DATABASES["default"]["OPTIONS"] = {
+    "connect_timeout": 10,
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
