@@ -88,9 +88,15 @@ DATABASES = {
     "default": env.db("DATABASE_URL")
 }
 
-DATABASES["default"]["CONN_MAX_AGE"] = 60
+DATABASES["default"]["CONN_MAX_AGE"] = env.int(
+    "DB_CONN_MAX_AGE", default=60
+)
 DATABASES["default"]["OPTIONS"] = {
     "connect_timeout": 10,
+    # Required for PostgreSQL transaction-mode poolers (e.g. Supabase
+    # Supavisor on port 6543): prepared statements are session-scoped
+    # and break when the pooler reassigns backend connections.
+    "prepare_threshold": None,
 }
 
 # Password validation
@@ -137,4 +143,28 @@ MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+
+    "ROTATE_REFRESH_TOKENS": True,
+
+    "BLACKLIST_AFTER_ROTATION": False,
+
+    "AUTH_HEADER_TYPES": ("Bearer",),
 }

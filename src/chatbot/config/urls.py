@@ -23,4 +23,37 @@ urlpatterns = [
         "api/products/",
         include("apps.products.api_urls"),
     ),
+    path(
+        "api/inventory/",
+        include("apps.inventory.api_urls"),
+    ),
+    path(
+        "api/pricing/",
+        include("apps.pricing.api_urls"),
+    ),
+    path(
+    "api/cart/",
+    include("apps.orders.api_urls"),
+),
+    path("api/orders/", include("apps.orders.order_api_urls")),
+    path(
+    "api/auth/",
+    include("apps.core.api_urls"),
+),
+path(
+    "api/stores/",
+    include("apps.stores.api_urls"),
+),
+path(
+    "api/stores/<int:store_id>/products/",
+    include("apps.products.management_api_urls"),
+),
+path(
+    "api/stores/<int:store_id>/inventory/",
+    include("apps.inventory.management_api_urls"),
+),
+path(
+    "api/stores/<int:store_id>/prices/",
+    include("apps.pricing.management_api_urls"),
+),
 ]

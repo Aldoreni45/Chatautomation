@@ -1,0 +1,23 @@
+Count,Message,Traceback,Nodes
+11,login failed for perf_owner: 500,"  File ""C:\Users\ALDO RENI\OneDrive\Desktop\Project\Chatbot\.venv\Lib\site-packages\locust\user\users.py"", line 166, in run
+    self.on_start()
+    ~~~~~~~~~~~~~^^
+  File ""C:\Users\ALDO RENI\OneDrive\Desktop\Project\Chatbot\performance\locustfile.py"", line 141, in on_start
+    login(self.client, OWNER_USERNAME, OWNER_PASSWORD)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\ALDO RENI\OneDrive\Desktop\Project\Chatbot\performance\locustfile.py"", line 51, in login
+    raise RuntimeError(
+        f""login failed for {username}: {resp.status_code}""
+    )
+",local
+11,login failed for perf_cust_19: 500,"  File ""C:\Users\ALDO RENI\OneDrive\Desktop\Project\Chatbot\.venv\Lib\site-packages\locust\user\users.py"", line 166, in run
+    self.on_start()
+    ~~~~~~~~~~~~~^^
+  File ""C:\Users\ALDO RENI\OneDrive\Desktop\Project\Chatbot\performance\locustfile.py"", line 187, in on_start
+    login(self.client, self.username, CUSTOMER_PASSWORD)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\ALDO RENI\OneDrive\Desktop\Project\Chatbot\performance\locustfile.py"", line 51, in login
+    raise RuntimeError(
+        f""login failed for {username}: {resp.status_code}""
+    )
+",local
